@@ -1,11 +1,8 @@
-def izracunKlasicnegaRebra(material):
 #%%
+def izracunKlasicnegaRebra(material, L):
     from knjiznicaMaterialov import knjiznica 
     material = knjiznica(material)
 
-#%%
-    
-#%%
     import numpy as np
 
     k = material['k']
@@ -15,7 +12,6 @@ def izracunKlasicnegaRebra(material):
     A_cs = np.pi * d**2 / 4 # m^2, precni presek
     P = np.pi * d # m, obseg
     h_povp = 100 # W/m^2K, povprecna prestopnost
-    L = 0.05 # m, dolžina 
     TH_b = T_b - T_inf # theta baze
 
     #izracun m
@@ -25,8 +21,4 @@ def izracunKlasicnegaRebra(material):
     M = TH_b * np.sqrt(h_povp * P * k * A_cs)
 
     Q_f = M * ((np.sinh(m*L) + (h_povp / m*k)*np.cosh(m*L)) / (np.cosh(m*L) + (h_povp / m*k)*np.sinh(m*L))) 
-#%%
     return Q_f
-
-
-# %%
