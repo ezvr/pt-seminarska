@@ -1,7 +1,7 @@
-def izracunKlasicnegaRebra():
+def izracunKlasicnegaRebra(material):
 #%%
     from knjiznicaMaterialov import knjiznica 
-    material = knjiznica('aluminij')
+    material = knjiznica(material)
 
 #%%
     
@@ -25,8 +25,6 @@ def izracunKlasicnegaRebra():
     M = TH_b * np.sqrt(h_povp * P * k * A_cs)
 
     Q_f = M * ((np.sinh(m*L) + (h_povp / m*k)*np.cosh(m*L)) / (np.cosh(m*L) + (h_povp / m*k)*np.sinh(m*L))) 
-    
-    print(Q_f, m, M)
 #%%
     return Q_f
 
