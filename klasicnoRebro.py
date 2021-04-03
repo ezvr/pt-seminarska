@@ -1,4 +1,4 @@
-def izracunKlasicnegaRebra(material):
+def izracunKlasicnegaRebra(material, nReber):
 #%%
     from knjiznicaMaterialov import knjiznica 
     material = knjiznica('plastika')
