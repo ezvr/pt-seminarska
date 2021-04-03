@@ -8,3 +8,6 @@ from knjiznicaMaterialov import knjiznica
 knjiznica('plastika')
 
 # %%
+from klasicnoRebro import izracunKlasicnegaRebra 
+izracunKlasicnegaRebra('plastika')
+# %%
