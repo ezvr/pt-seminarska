@@ -1,7 +1,10 @@
 # https://github.com/galtay/hilbertcurve
+# pip install hilbertcurve
+
 def defineHilbertCurve(iteracij, dimenzij):
     # Imports
     from hilbertcurve.hilbertcurve import HilbertCurve
+    import numpy as np
     # Helper function
     def Extract(lst,index):
         return [item[index] for item in lst]
