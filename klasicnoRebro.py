@@ -1,12 +1,11 @@
 #%%
-def izracunKlasicnegaRebra(material, L):
+def izracunKlasicnegaRebra(material, L, d):
     from knjiznicaMaterialov import knjiznica 
     material = knjiznica(material)
 
     import numpy as np
 
     k = material['k']
-    d = 5e-3 # m, premer rebra
     T_b = 110 # °C, temp. baze
     T_inf = 20 # °C, fluida
     A_cs = np.pi * d**2 / 4 # m^2, precni presek
