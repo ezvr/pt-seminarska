@@ -19,7 +19,7 @@ def izracunKlasicnegaRebra(material, L, d):
     # izracun M
     M = TH_b * np.sqrt(h_povp * P * k * A_cs)
 
-    Q_f = M * ((np.sinh(m*L) + (h_povp / m*k)*np.cosh(m*L)) / (np.cosh(m*L) + (h_povp / m*k)*np.sinh(m*L))) 
+    Q_f = M * ((np.sinh(m*L) + (h_povp / (m*k))*np.cosh(m*L)) / (np.cosh(m*L) + (h_povp / (m*k))*np.sinh(m*L))) 
     return Q_f
     
 # %%
