@@ -9,6 +9,12 @@
 def izrisKlasicnihReber():
     materiali = Q_f()[0]
     Q_f_materiali = Q_f()[1]
+
+    round_to_tenths = [round(num,3) for num in Q_f_materiali]
+
+    for i,num in enumerate(round_to_tenths):
+        print(f'Q materiala: {materiali[i]} je {num}')
+
     # importing modules
     import matplotlib.pyplot as plt
     # izris rezultatov
@@ -28,7 +34,7 @@ def Q_f():
     # izračun za vsak material
     Q_f_materiali = []
     for material in materiali:
-        Q_f_materiali.append(izracunKlasicnegaRebra(material, 0.001, 0.005))
+        Q_f_materiali.append(izracunKlasicnegaRebra(material, 0.2, 0.005))
     return materiali, Q_f_materiali
 
 #%%
