@@ -5,6 +5,15 @@ def defineHilbertCurve(iteracij, dimenzij):
     # Imports
     from hilbertcurve.hilbertcurve import HilbertCurve
     import numpy as np
+
+    # Edge case: if iteracij = 1, straight line
+    if iteracij == 1:
+        import numpy as np
+        dimenzij = 1
+        b = np.ones(dimenzij)
+        a = np.zeros_like(b)
+        dist = np.linalg.norm(a-b)
+
     # Helper function
     def Extract(lst,index):
         return [item[index] for item in lst]
