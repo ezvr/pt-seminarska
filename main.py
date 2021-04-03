@@ -1,8 +1,10 @@
+# MANJKA:
+# KNJIŽNJICA MATERIALOV
+# PROGRAM ZA KLASIČEN IZRAČUN REBRA
+
+
 #%%
-print('hello world')
-# %%
-k = 1
-b = 2
-c = k+b
-print(c)
+from knjiznicaMaterialov import knjiznica 
+knjiznica('plastika')
+
 # %%
