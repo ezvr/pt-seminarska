@@ -1,11 +1,20 @@
 def knjiznica(material):
     materiali = {
         'plastika': {
-            'lambda' : 1, #j/kwK
+            'lambda' : 1, #W/mK
+            'cp' : 1, #J/kgK
+            
 
         },
         'zelezo': {
-            'lambda' : 1, #j/kwK
+            'lambda' : 1, #W/mK
+            'cp' : 1, #J/kgK
+        }
+
+        ,
+        'zelezo': {
+            'lambda' : 1, #W/mK
+            'cp' : 1, #J/kgK
         }
     }
 
