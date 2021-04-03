@@ -1,29 +1,31 @@
 # https://github.com/galtay/hilbertcurve
+# pip install hilbertcurve
 
-#%%
-def defineHilbertCurve():
-    return null
+def defineHilbertCurve(iteracij, dimenzij):
+    # Imports
+    from hilbertcurve.hilbertcurve import HilbertCurve
+    import numpy as np
+    # Helper function
+    def Extract(lst,index):
+        return [item[index] for item in lst]
 
-#%%
-def Extract(lst,index):
-    return [item[index] for item in lst]
-#%%
-from hilbertcurve.hilbertcurve import HilbertCurve
-# %%    
-p=2; n=3
-maxDist = 2**(p*n)
-hilbert_curve = HilbertCurve(p, n)
-distances = list(range(maxDist))
-points = hilbert_curve.points_from_distances(distances)
-x = Extract(points,0)
-y = Extract(points,1)
-import matplotlib.pyplot as plt
-plt.plot(x,y)
-plt.show()
+    # Make the HilberCurve
+    p=iteracij; n=dimenzij
+    maxDist = 2**(p*n)
+    hilbert_curve = HilbertCurve(p, n)
+    distances = list(range(maxDist))
+    points = hilbert_curve.points_from_distances(distances)
 
-# %%
-from mpl_toolkits.mplot3d import Axes3D
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-Axes3D.plot(xs, ys, *args, **kwargs)
-# %%
+    delitev = 2**iteracij-1 # število delitev na osi
+   # Determine points for graphing
+    graphPoints = []
+    for i in range(n):
+        graphPoints.append(np.array(Extract(points,i)) / delitev)
+
+    # Determine presek
+    presek = 1/(delitev*4)
+
+    # Vrni dolžino rebra, presek rebra, in točke za izris
+    return (maxDist-1)/delitev, graphPoints, presek
+
+
