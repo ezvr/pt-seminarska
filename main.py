@@ -28,7 +28,7 @@ def Q_f():
     # izračun za vsak material
     Q_f_materiali = []
     for material in materiali:
-        Q_f_materiali.append(izracunKlasicnegaRebra(material, 0.05, 0.005))
+        Q_f_materiali.append(izracunKlasicnegaRebra(material, 0.001, 0.005))
     return materiali, Q_f_materiali
 
 #%%
