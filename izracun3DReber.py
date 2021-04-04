@@ -16,6 +16,7 @@ class Heatsink:
             raise Exception('Dimenzije morajo biti 2 ali 3.')
 
     def drawPathGraphs(self):
+        print('hello!')
         import matplotlib.pyplot as plt
         import os
         paths = [path[1] for path in self.paths]
@@ -28,11 +29,13 @@ class Heatsink:
 
         for index,tocke in enumerate(paths):
 
+
             x, T_x = self.getGradients()[index]
             aQs = [self.Qs[index] for x in x]
             qMax = max(self.Qs)
 
-            print(f'qMax is {qMax}')
+           
+
             fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10,7))
             fig.suptitle('Oblika rebra in temperaturni gradient')
             ax1.plot(tocke[0], tocke[1], linewidth=3)
