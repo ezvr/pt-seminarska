@@ -26,5 +26,7 @@ def knjiznica(material):
 
     if material in materiali:
         return(materiali[material])
+    elif material == "all":
+        return materiali
     else:
         raise Exception('Sorry, material ne obstaja')

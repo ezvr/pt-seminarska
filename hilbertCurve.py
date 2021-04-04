@@ -9,11 +9,11 @@ def defineHilbertCurve(iteracij, dimenzij):
     # Edge case: if iteracij = 1, straight line
     if iteracij == 1:
         import numpy as np
-        dimenzij = 1
         b = np.ones(dimenzij)
         a = np.zeros_like(b)
         dist = np.linalg.norm(a-b)
-
+        c = np.column_stack((a,b))
+        return dist, c, 0.5
     # Helper function
     def Extract(lst,index):
         return [item[index] for item in lst]
@@ -32,7 +32,7 @@ def defineHilbertCurve(iteracij, dimenzij):
         graphPoints.append(np.array(Extract(points,i)) / delitev)
 
     # Determine presek
-    presek = 1/(delitev*4)
+    presek = 1/(delitev*2)
 
     # Vrni dolžino rebra, presek rebra, in točke za izris
     return (maxDist-1)/delitev, graphPoints, presek
