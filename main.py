@@ -48,8 +48,6 @@ Q_f()
 Q_materiali = Q_f()[1]
 Q_max = max(Q_materiali)
 
-for 
-
 
 
 
