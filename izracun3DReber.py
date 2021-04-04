@@ -16,7 +16,6 @@ class Heatsink:
             raise Exception('Dimenzije morajo biti 2 ali 3.')
 
     def drawPathGraphs(self):
-        print('hello!')
         import matplotlib.pyplot as plt
         import os
         paths = [path[1] for path in self.paths]
@@ -29,32 +28,53 @@ class Heatsink:
 
         for index,tocke in enumerate(paths):
 
-
+            #Priprava podatkov
             x, T_x = self.getGradients()[index]
             aQs = [self.Qs[index] for x in x]
             qMax = max(self.Qs)
+            xQs = range(0, len(self.Qs))
+            dolzine = [path[0]/50 for path in self.paths]
+            
+            # Zagon grafa
+            plt.figure(figsize=(8,8))
+ 
+            # Graf 1, skupni toplotni tok
+            ax1 = plt.subplot(212)
+            ax1.plot(dolzine,self.Qs, color="orange", label="Toplotni tok reber")
+            ax1.plot(dolzine[index], self.Qs[index], 'bo', linewidth=4, label=f'Trenutni toplotni tok ({round(self.Qs[index],1)} W)')
+            ax1.set(xlabel='Dolžina [m]', ylabel='Toplotni tok [W]')
+            ax1.legend()
 
-           
-
-            fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10,7))
-            fig.suptitle('Oblika rebra in temperaturni gradient')
-            ax1.plot(tocke[0], tocke[1], linewidth=3)
-            ax2.plot(x, T_x)
-            ax3 = ax2.twinx()
-            ax3.plot(x,aQs)
-            ax3.set_ylim([0,qMax+qMax*0.2])
-
-            # Plot path
-
-            #plt.plot(x, T_x, color ='maroon')
+            # Graf 2, temperaturni gradient
+            ax2 = plt.subplot(221)
+            ax2.plot(x, T_x, label="Temperaturni gradient [°C]", color="green")
             ax2.set(xlabel='Dolžina [m]', ylabel='Temperatura[°C]')
-            ax2.set_ylim([0,110])
+            ax2.set_ylim([15,125])
+            ax2.legend()
 
-            #ax1.xlabel("Dolžina [m]")
-            #ax1.ylabel("Dolžina [m]")
-            #ax1.title("Oblika rebra")
-           # plt.axis([0, L, 0, 120])
-            fig.savefig(dir_path+f'/paths/{self.material}/path{index}.png')  # Shranimo v to mapo
+            # Graf 3, trenutni toplotni tok 
+            #ax3 = ax2.twinx()
+            #ax3.plot(x,aQs, color='red', label="Toplotni tok [W]")
+            #ax3.set_ylim([0,qMax+qMax*0.2])
+            #ax3.set(ylabel='Toplotni tok [W]',)
+            # Graf 3 legend fix
+            #lines, labels = ax2.get_legend_handles_labels()
+            #lines2, labels2 = ax3.get_legend_handles_labels()
+            #ax2.legend(lines + lines2, labels + labels2, loc=0)
+
+
+            # Graf 4, oblika rebra 
+            ax4 = plt.subplot(222)
+            ax4.plot(tocke[0]/50, tocke[1]/50, linewidth=3, color="maroon", label=f'Dolžina rebra ({round(dolzine[index]*1000,1)} mm)')
+            ax4.axes.get_yaxis().set_visible(False)
+            ax4.axes.get_xaxis().set_visible(False)
+            ax4.set_title('Oblika rebra')
+            ax4.margins(0.2, 0.2)
+            ax4.legend()
+
+            # Print graf
+            plt.tight_layout()
+            plt.savefig(dir_path+f'/paths/{self.material}/path{index}.png')  # Shranimo v to mapo
             plt.close()
         
     def drawGradientGraphs(self):
